@@ -24,9 +24,10 @@ public class ShowAddress {
 	private String city;
 	private String httpUrl;
 	private String httpArg;
-	
-	public ShowAddress() {
+	private String mykey;
+	public ShowAddress(String mykey) {
 		httpUrl = "http://apis.baidu.com/apistore/iplookupservice/iplookup";
+		this.mykey = mykey;
 	}
 
 	/**
@@ -48,7 +49,7 @@ public class ShowAddress {
 	                .openConnection();
 	        connection.setRequestMethod("GET");
 	        // 填入apikey到HTTP header
-	        connection.setRequestProperty("apikey",  "bcf69b3f618d1ca364def3583f6abaaf");
+	        connection.setRequestProperty("apikey", mykey);
 	        connection.connect();
 	        InputStream is = connection.getInputStream();
 	        reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
